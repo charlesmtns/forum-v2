@@ -32,6 +32,7 @@ public class DashboardDataProcessingService {
 		principalCategories.stream().forEach(category -> {
 			CategoryStatisticsData statisticsData = this.categoryStatisticsService.load(category);
 			categoriesAndTheirData.add(category, statisticsData);
+			System.out.println(category.getName());
 		});
 				
 		return categoriesAndTheirData;
