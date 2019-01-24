@@ -3,6 +3,8 @@ package br.com.alura.forum.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,7 +65,7 @@ public class TopicController {
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<TopicOutputDto> createTopic(@RequestBody NewTopicInputDto newTopicInputDto,
+	public ResponseEntity<TopicOutputDto> createTopic(@Valid @RequestBody NewTopicInputDto newTopicInputDto,
 			@AuthenticationPrincipal User loggedUser, UriComponentsBuilder uriBuilder) {
 
 		Topic topic = newTopicInputDto.build(loggedUser, this.courseRepository);
